@@ -1,26 +1,223 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
 
+/*
+  Same values as tokens.js, exposed as plain CSS custom properties for
+  anywhere that isn't a Tailwind utility class. Keep in sync with tokens.js
+  by hand — there's no build step wiring these together yet.
+
+  --font-display / --font-body / --font-mono are NOT declared here: they're
+  injected on <html> by the next/font `variable` option (see lib/fonts.ts
+  and app/layout.tsx), which is the next/font-recommended way to expose a
+  loaded font as a CSS variable.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --color-bg-canvas: #f7f5ec;
+  --color-bg-surface: #ffffff;
+  --color-bg-inverse: #02594e;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-text-primary: #4c6763;
+  --color-text-secondary: #7a8c89;
+  --color-text-muted: #a8b0ac;
+  --color-text-inverse: #f9f4ed;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-line-subtle: #ede8e0;
+  --color-line-strong: #d0d5dd;
+
+  --color-accent-base: #02594e;
+  --color-accent-hover: #013a33;
+
+  --color-card-work: #fbdfb8;
+  --color-card-apps: #ddd5f8;
+  --color-card-talks: #c3e2f8;
+
+  --color-badge-fill: #fbf3c4;
+  --color-badge-border: #e8d98a;
+
+  --color-cta-base: #0b0b0b;
+  --color-cta-hover: #262626;
+  --color-cta-text: #ffffff;
+
+  --size-h1: 2.25rem;
+  --size-h2: 1.5rem;
+  --size-h3: 1.25rem;
+  --size-body: 1rem;
+  --size-small: 0.875rem;
+  --size-caption: 0.75rem;
+
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-pill: 9999px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Work timeline's connecting rule: a single pseudo-element on the list
+   container rather than a per-item border, so it can run continuously from
+   the first marker's center to the last without per-item seams. Top/bottom
+   are computed and set as custom properties by work-timeline.tsx once
+   marker positions are known. */
+.timeline-rule {
+  position: relative;
+}
+.timeline-rule::before {
+  content: "";
+  position: absolute;
+  /* Centered on the 26px marker column (the grid's first track), so the
+     rule passes through marker centers rather than between the year and
+     card columns. */
+  left: 13px;
+  width: 1px;
+  background-color: var(--color-line-subtle);
+  top: var(--timeline-rule-top, 0px);
+  bottom: var(--timeline-rule-bottom, 0px);
+  pointer-events: none;
+}
+@media (max-width: 819px) {
+  .timeline-rule::before {
+    display: none;
+  }
+}
+
+/* In-page links (e.g. the hero's "Read case studies" → #work-timeline-heading)
+   land below the sticky nav instead of underneath it. */
+html {
+  scroll-padding-top: 96px;
+}
+
+/* Chat avatar blink: a quick close-open every ~5s. Off for reduced motion. */
+@keyframes chat-avatar-blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.1); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .chat-avatar-eyes {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: chat-avatar-blink 5s ease-in-out infinite;
+  }
+}
+
+/* Hero card deck hover — springs sampled from benshih.design's Framer
+   Motion config, as CSS linear() curves so no animation library is needed.
+   CSS transitions retarget from wherever they are, so moving between cards
+   mid-animation stays fluid the same way a spring does. */
+:root {
+  /* stiffness 140, damping 22, mass 0.8: no overshoot, ~780ms */
+  --spring-deck: linear(0, 0.028, 0.094, 0.179, 0.271, 0.362, 0.448, 0.526, 0.597, 0.658, 0.712, 0.758, 0.797, 0.831, 0.859, 0.883, 0.903, 0.919, 0.933, 0.945, 0.954, 0.962, 0.969, 0.974, 0.979, 0.982, 0.986, 0.988, 0.99, 0.992, 0.993, 0.995, 0.996, 0.996, 0.997, 0.998, 0.998, 0.998, 0.999, 0.999, 1);
+  /* stiffness 300, damping 25: slight overshoot, ~590ms */
+  --spring-card: linear(0, 0.029, 0.102, 0.2, 0.312, 0.427, 0.538, 0.639, 0.729, 0.806, 0.869, 0.921, 0.96, 0.99, 1.011, 1.025, 1.033, 1.037, 1.038, 1.036, 1.033, 1.029, 1.025, 1.021, 1.017, 1.013, 1.01, 1.007, 1.004, 1.003, 1.001, 1, 0.999, 0.999, 0.999, 0.999, 0.999, 0.999, 0.999, 0.999, 1);
+  /* stiffness 380, damping 22: bouncy pop, ~650ms */
+  --spring-pop: linear(0, 0.044, 0.155, 0.304, 0.466, 0.624, 0.766, 0.885, 0.977, 1.044, 1.087, 1.11, 1.117, 1.112, 1.099, 1.082, 1.063, 1.044, 1.028, 1.014, 1.003, 0.995, 0.99, 0.987, 0.986, 0.987, 0.988, 0.99, 0.993, 0.995, 0.997, 0.998, 1, 1.001, 1.001, 1.002, 1.002, 1.002, 1.001, 1.001, 1);
+}
+
+.deck-spring {
+  transition:
+    transform 780ms var(--spring-deck),
+    opacity 120ms ease-out;
+}
+
+.deck-card-spring {
+  transition:
+    transform 590ms var(--spring-card),
+    box-shadow 300ms ease-out;
+}
+
+.deck-pop-spring {
+  transition:
+    transform 650ms var(--spring-pop),
+    opacity 180ms ease-out;
+}
+
+@keyframes deck-confetti {
+  from {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate(var(--confetti-x), var(--confetti-y)) scale(0.3) rotate(var(--confetti-r));
+    opacity: 0;
+  }
+}
+
+.deck-confetti {
+  animation: deck-confetti 650ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-spring,
+  .deck-card-spring,
+  .deck-pop-spring {
+    transition: opacity 150ms ease-out;
+  }
+  .deck-confetti {
+    display: none;
+  }
+}
+
+/* Madrid tifo: status shine, after the Tifoista landing. */
+@keyframes tifo-text-shine {
+  0%, 68% { background-position: 130% 0; opacity: 0; }
+  72% { opacity: 0.68; }
+  87% { background-position: -30% 0; opacity: 0.4; }
+  90%, 100% { background-position: -30% 0; opacity: 0; }
+}
+.tifo-shine {
+  position: relative;
+}
+.tifo-shine::after {
+  position: absolute;
+  inset: 0;
+  content: attr(data-label);
+  color: transparent;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(108deg, transparent 39%, #fff4c2 49%, rgba(255, 255, 255, 0.2) 52%, transparent 63%);
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: tifo-text-shine 5.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tifo-shine::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Madrid tifo: the 2D players breathe, and keep waving or applauding. */
+@keyframes tifo-arm {
+  from { transform: rotate(var(--arm-from)); }
+  to { transform: rotate(var(--arm-to)); }
+}
+@keyframes tifo-breathe {
+  from { transform: scaleY(1); }
+  to { transform: scaleY(1.012); }
+}
+
+/* Wall shelf reading view: the held book bobbing, and a page turning. */
+@keyframes book-read-bob {
+  from { transform: translateY(0) rotate(-0.5deg); }
+  to { transform: translateY(-4px) rotate(0.5deg); }
+}
+@keyframes book-page-turn-v {
+  0%, 34% { transform: rotateY(-5deg); }
+  66%, 100% { transform: rotateY(-175deg); }
 }

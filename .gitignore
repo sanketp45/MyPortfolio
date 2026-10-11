@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local references, recordings and unused raw images (not part of the site)
+/reference-video.mov
+/Screenshot *.png
+/public/Screen Recording *.mov
+/public/photos/Screenshot *.png
+/public/photos/image copy*.png
+/public/photos/books.jpg
+/public/photos/bernabeu.jpg
