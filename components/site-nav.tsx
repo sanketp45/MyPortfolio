@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CTA_HOVER } from "@/components/cta-styles";
 import { LINKEDIN_URL, MAILTO } from "@/lib/site-links";
+import { isWhiteSurface } from "@/lib/page-surface";
 import { ChatAvatar } from "@/components/chat/ChatAvatar";
 import { CHAT_STATE_EVENT, CHAT_TOGGLE_EVENT } from "@/components/chat/events";
 
@@ -146,6 +147,8 @@ export default function SiteNav({
     return () => window.removeEventListener(CHAT_STATE_EVENT, onChatState);
   }, []);
 
+  const whiteSurface = isWhiteSurface(pathname);
+
   const isCurrentLink = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -153,7 +156,8 @@ export default function SiteNav({
     <nav
       aria-label="Primary"
       className={cx(
-        "sticky top-0 z-50 border-b bg-bg-canvas",
+        "sticky top-0 z-50 border-b",
+        whiteSurface ? "bg-bg-surface" : "bg-bg-canvas",
         isScrolled ? "border-line-subtle" : "border-transparent",
         "transition-colors duration-150 ease motion-reduce:transition-none"
       )}
@@ -174,7 +178,12 @@ export default function SiteNav({
 
         {/* Centre zone — hidden below md, real viewport centring via the
             grid's equal 1fr outer columns at md+ */}
-        <div className="hidden items-center gap-1 rounded-pill bg-white p-[6px] md:flex">
+        <div
+          className={cx(
+            "hidden items-center gap-1 rounded-pill p-[6px] md:flex",
+            whiteSurface ? "bg-bg-canvas" : "bg-white"
+          )}
+        >
           {NAV_LINKS.map((link) => {
             const force = forceLinks?.[link.key];
             const isCurrent =

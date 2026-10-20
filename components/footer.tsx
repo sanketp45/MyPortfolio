@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { cx } from "@/lib/cx";
+import { isWhiteSurface } from "@/lib/page-surface";
 import { Panel } from "@/components/panel";
 import { GITHUB_URL, LINKEDIN_URL, MAILTO, MEDIUM_URL, RESUME_URL } from "@/lib/site-links";
 
@@ -186,7 +187,7 @@ export default function Footer() {
 
   return (
     <footer>
-      <Panel className="mb-5 mt-5 bg-bg-surface">
+      <Panel className={cx("mb-5 mt-5", isWhiteSurface(pathname) ? "bg-bg-canvas" : "bg-bg-surface")}>
         <div
           className={cx(
             // No explicit grid gap was given — inferred a moderate,

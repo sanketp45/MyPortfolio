@@ -1,5 +1,5 @@
 // app/fonts.ts
-import { Gabarito, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Gabarito, Hanken_Grotesk, Instrument_Serif, JetBrains_Mono, Kalam } from 'next/font/google';
 
 export const display = Gabarito({
   subsets: ['latin'],
@@ -19,5 +19,23 @@ export const mono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
   variable: '--font-mono',
+  display: 'swap',
+});
+
+// Accent lines only (e.g. a case study's closing aside), always italic.
+export const serif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: 'italic',
+  variable: '--font-serif',
+  display: 'swap',
+});
+
+
+// Handwriting for case-study sticky notes only.
+export const hand = Kalam({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-hand',
   display: 'swap',
 });

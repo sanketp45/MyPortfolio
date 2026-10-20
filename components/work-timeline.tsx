@@ -220,7 +220,9 @@ function TimelineItem({ item, isLast, markerRef, tooltip, demoState }: TimelineI
               href={item.href}
               {...(/^https?:\/\//.test(item.href) && { target: "_blank", rel: "noopener noreferrer" })}
               className={cx(
-                "outline-none after:absolute after:inset-0 after:content-['']",
+                // The overlay covers the whole card, over the media too (z-10),
+                // so anywhere on it opens the case study.
+                "outline-none after:absolute after:inset-0 after:z-10 after:content-['']",
                 "underline-offset-[5px] focus-visible:underline",
                 `${zoneHover}:underline`,
                 forceHover && "underline"

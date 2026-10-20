@@ -15,6 +15,14 @@ export interface WorkTimelineItem {
 export const DEFAULT_WORK_ITEMS: WorkTimelineItem[] = [
   {
     year: "2026",
+    title: "Multiple nominees for FDs at one of India’s largest NBFCs",
+    description:
+      "Turning a single nominee form into a flow that explains priority and percentage, and helps people set up the right one.",
+    image: "/case-studies/fd-nomination/hero/summary-three.png",
+    href: "/nominee",
+  },
+  {
+    year: "2026",
     title: "Redesigning the investment page for India's largest NBFC",
     description:
       "Investment mall is a seamless platform that signifies investing (Stocks, MF, FD, Savings plan).",

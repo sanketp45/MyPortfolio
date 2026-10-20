@@ -34,6 +34,26 @@ export const color = {
   // Every CTA button uses this, not text/primary or plain black. On black,
   // hover lightens slightly — the one exception to "darken on hover",
   // since there's nothing darker than near-black to move to.
+  // Case-study pages follow a document-style reference (near-black ink,
+  // warm grey for secondary text, a brighter green for markers) rather
+  // than the site's teal palette.
+  caseStudy: {
+    ink:   '#11110F',
+    muted: '#706C63',
+    green: '#148E4B',
+    red:   '#C2412D',
+    // Iteration tags and the decision callout, after a reference that
+    // marks iterations with a lavender pill.
+    purple:   '#7B3FD9',
+    lavender: '#F8F5FE',
+  },
+  // Panel behind case-study screens: a royal blue in the FD app's own navy
+  // family, lit at the top centre (light) and deepening to the edges.
+  stage: {
+    light: '#3474C2',
+    base:  '#2462B0',
+    deep:  '#1A4E93',
+  },
   cta: {
     base:  '#0B0B0B',
     hover: '#262626',
