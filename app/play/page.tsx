@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Panel } from "@/components/panel";
 import { WritingCard } from "@/components/writing";
 import { VIBE_PROJECTS } from "@/lib/vibe-projects";
@@ -29,6 +30,14 @@ export default function PlayPage() {
                 <WritingCard key={project.href} post={project} />
               ))}
             </div>
+
+            <p className="mt-[40px] font-body text-[18px] text-text-primary">
+              New: grab my{" "}
+              <Link href="/play/logic-doc-writer" className="font-medium text-accent-base underline underline-offset-4">
+                Logic Doc Writer Claude skill
+              </Link>
+              , which writes Figma logic docs for you.
+            </p>
           </div>
         </Panel>
       </section>
