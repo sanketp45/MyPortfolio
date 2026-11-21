@@ -76,7 +76,7 @@ export default function GettingToWork({
           {sub.notes && <ProsCons notes={sub.notes} sticky={stickyNotes} />}
           {sub.thinking && (
             <div className="grid gap-[12px] rounded-[16px] bg-case-lavender px-[clamp(24px,3.3vw,32px)] py-[clamp(20px,2.9vw,28px)]">
-              <span className="flex items-center gap-[6px] font-mono text-[14px] font-medium leading-[1.4] text-case-purple">
+              <span className="flex items-center gap-[6px] font-display text-[16px] font-semibold leading-[1.4] tracking-[-0.01em] text-case-purple">
                 <LearningsIcon width={16} height={16} />
                 Thinking
               </span>
@@ -84,7 +84,7 @@ export default function GettingToWork({
               {sub.movedOn && (
                 <>
                   <hr className="my-[4px] ml-[22px] border-0 border-t border-dashed border-case-purple/30" />
-                  <span className="pl-[22px] font-mono text-[14px] font-medium leading-[1.4] text-case-purple">Why we moved on</span>
+                  <span className="pl-[22px] font-display text-[16px] font-semibold leading-[1.4] tracking-[-0.01em] text-case-purple">Why we moved on</span>
                   <p className="pl-[22px] font-mono text-[14px] leading-[1.7] text-case-muted">{sub.movedOn}</p>
                 </>
               )}

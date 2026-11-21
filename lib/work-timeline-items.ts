@@ -18,14 +18,14 @@ export const DEFAULT_WORK_ITEMS: WorkTimelineItem[] = [
     title: "Multiple nominees for FDs at one of India’s largest NBFCs",
     description:
       "Turning a single nominee form into a flow that explains priority and percentage, and helps people set up the right one.",
-    image: "/case-studies/fd-nomination/hero/summary-three.png",
+    image: "/images/work-fd-nominee.png",
     href: "/nominee",
   },
   {
     year: "2026",
-    title: "Redesigning the investment page for India's largest NBFC",
+    title: "Redesigning the investment page for India’s largest NBFC",
     description:
-      "Investment mall is a seamless platform that signifies investing (Stocks, MF, FD, Savings plan).",
+      "Investment Mall is a seamless platform that unifies investing across stocks, mutual funds, fixed deposits and savings plans.",
     image: "/images/work-investment-mall.png",
     href: "https://sanketportfilio.framer.website/page-3",
   },
@@ -40,7 +40,7 @@ export const DEFAULT_WORK_ITEMS: WorkTimelineItem[] = [
   {
     year: "2024",
     title: "Enhancing the IPO listing experience for India’s largest NBFC",
-    description: "Turning IPO frustration into understanding with simplicity, education and insight",
+    description: "Turning IPO frustration into understanding with simplicity, education and insight.",
     image: "/images/work-ipo.png",
     href: "https://medium.com/@patilsanket199/case-study-revolutionising-the-ipo-listing-experience-for-abc-firm-7e8c67c9a363",
   },

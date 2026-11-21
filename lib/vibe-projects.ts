@@ -15,7 +15,7 @@ export const VIBE_PROJECTS: WritingPost[] = [
   },
   {
     title: "CharCount",
-    excerpt: "Built a Figma Plugin to Auto-Show Character Counts — Meet CharCount",
+    excerpt: "A Figma plugin that automatically shows character counts on text layers.",
     href: "https://www.figma.com/community/plugin/1582787448267588063/charcount",
     image: "/images/vibe-charcount.png",
     imageWidth: 2880,
