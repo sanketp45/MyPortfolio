@@ -6,6 +6,7 @@ import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { cx } from "@/lib/cx";
 import { Panel } from "@/components/panel";
+import HeroIntro from "@/components/hero-intro";
 import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "@/components/cta-styles";
 
 // ---------------------------------------------------------------------------
@@ -673,9 +674,9 @@ export default function Hero() {
             </div>
           </div>
 
-          <p className="mb-[14px] font-body text-[18px] font-medium text-text-primary md:text-h3">
-            Hi, I&apos;m Sanket, a Product Designer.
-          </p>
+          <div className="mb-[clamp(28px,3.6vw,44px)]">
+            <HeroIntro />
+          </div>
 
           {/* Headline */}
           {/* The longer line measures ~13.4x the font size, and the panel's
@@ -693,7 +694,7 @@ export default function Hero() {
           >
             {/* One flowing sentence on phones; two set lines from 1024px. */}
             <span className="min-[1024px]:block min-[1024px]:whitespace-nowrap">I design the screens </span>
-            <span className="min-[1024px]:block min-[1024px]:whitespace-nowrap">where people move their money.</span>
+            <span className="min-[1024px]:block min-[1024px]:whitespace-nowrap">where people invest their money.</span>
           </h1>
 
           {/* Sub headline */}

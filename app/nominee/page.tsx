@@ -518,9 +518,9 @@ const CHANGE_COMPARISONS: ChangeComparison[] = [
 ];
 
 const NEXT_ITEMS: NextItem[] = [
-  { title: "How many bookings add a nominee", text: "Whether an optional step still gets used." },
-  { title: "Edits soon after booking", text: "A spike would mean people weren’t sure the first time." },
-  { title: "Support questions about nominees", text: "What the screen still isn’t answering." },
+  { title: "How many people add a nominee", text: "Shows if people still use a step that’s optional." },
+  { title: "How many edit it soon after", text: "Lots of quick edits would mean people weren’t sure the first time." },
+  { title: "What people ask support", text: "Shows what the screen still doesn’t explain." },
 ];
 
 const REFLECTION_GROUPS: ReflectionGroup[] = [
@@ -528,12 +528,12 @@ const REFLECTION_GROUPS: ReflectionGroup[] = [
     title: "What I’d do differently",
     cards: [
       {
-        title: "Start from real families, not my examples",
-        body: "My example taught limits that don’t exist: family only, round numbers, exactly four. Next time I’d collect people’s own family setups first and write the examples from those.",
+        title: "Use real families in the examples",
+        body: "My example only showed family members, round numbers and four nominees, so people took those as rules. Next time I’d build the examples from real families.",
       },
       {
-        title: "Test the summary, not just the type screen",
-        body: "We tested understanding on the type screen, but the wrong setups only showed up in what people chose. The summary is where a wrong nomination can still be caught, so that’s what I’d test next.",
+        title: "Test the summary screen too",
+        body: "Mistakes showed up in what people chose, not in what they understood. The summary is the last place to catch them, so I’d test it next.",
       },
     ],
   },
@@ -541,12 +541,12 @@ const REFLECTION_GROUPS: ReflectionGroup[] = [
     title: "What I’m taking with me",
     cards: [
       {
-        title: "The example is part of the interface",
-        body: "7 of 15 people only understood after reading the example. When a screen explains a rule, the example does more teaching than the label, so it deserves the same design and testing as any button.",
+        title: "Examples teach more than labels",
+        body: "7 of 15 people only got it after reading the example. So I’ll design and test examples as carefully as any button.",
       },
       {
-        title: "Understanding the words isn’t getting it right",
-        body: "13 of 15 could explain both types, yet 10 of 14 still set up the wrong one for a mixed wish. Next time I’d test whether people end up with the result they wanted, not only whether they understand the screen.",
+        title: "Understanding isn’t the same as getting it right",
+        body: "13 of 15 could explain both types, but 10 of 14 still picked the wrong one. Next time I’ll check the final setup, not just whether people understood.",
       },
     ],
   },
@@ -606,14 +606,14 @@ export default function NomineeCaseStudyPage() {
       />
       <WhatsNext
         label="What’s next"
-        heading="Before and after launch"
-        intro="The flow is in development and not live yet. Once it ships, these are the signals I’d watch."
+        heading="After launch"
+        intro="The flow is still being built. After launch, I’ll watch three things."
         items={NEXT_ITEMS}
       />
       <Reflection
         label="Reflection"
         heading="What this project taught me"
-        intro="The words were never the hard part. The hard part was the gap between what people understood and what they set up."
+        intro="People understood the words. Many still set it up wrong. That gap was the real lesson."
         groups={REFLECTION_GROUPS}
       />
 

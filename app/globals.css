@@ -215,6 +215,78 @@ html {
   }
 }
 
+/* Hero intro: portrait settles in, text lines rise in turn, the head
+   sways gently around the neck, and the brows lift on hover. Every
+   movement is a couple of px or degrees, so it reads as alive, not busy. */
+@keyframes hero-intro-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes hero-intro-settle {
+  from { opacity: 0; transform: translateY(10px) rotate(-4deg) scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes hero-intro-sway {
+  0%, 100% { transform: rotate(-1.6deg); }
+  50% { transform: rotate(1.6deg); }
+}
+@keyframes hero-intro-wave {
+  0%, 62%, 100% { transform: translateY(72px) rotate(-14deg); }
+  10% { transform: translateY(0) rotate(-6deg); }
+  16% { transform: translateY(0) rotate(9deg); }
+  22% { transform: translateY(0) rotate(-7deg); }
+  28% { transform: translateY(0) rotate(9deg); }
+  34% { transform: translateY(0) rotate(-7deg); }
+  40% { transform: translateY(0) rotate(6deg); }
+  48% { transform: translateY(0) rotate(0deg); }
+}
+@keyframes hero-intro-smile {
+  0%, 6%, 54%, 100% { opacity: 0; }
+  12%, 48% { opacity: 1; }
+}
+/* Reduced motion: the hand stays up in a still "hello", no smile swap. */
+.hero-intro .portrait-smile { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-intro-portrait {
+    transform-origin: 50% 100%;
+    animation: hero-intro-settle 700ms var(--spring-deck, ease-out) both;
+  }
+  .hero-intro-line {
+    animation: hero-intro-rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-intro .portrait-head {
+    transform-box: view-box;
+    transform-origin: 50px 76px; /* the neck, in the portrait's 100x100 viewBox */
+    animation: hero-intro-sway 6s ease-in-out infinite;
+  }
+  /* Wave: hand rises from below, waves three times, drops; ~5s loop. */
+  .hero-intro .portrait-wave-arm {
+    transform-box: view-box;
+    transform-origin: -3px 104px; /* the elbow, just below the frame */
+    animation: hero-intro-wave 5s ease-in-out 900ms infinite both;
+  }
+  .hero-intro .portrait-smile {
+    animation: hero-intro-smile 5s ease-in-out 900ms infinite both;
+  }
+  .hero-intro .portrait-mouth {
+    animation: hero-intro-smile 5s ease-in-out 900ms infinite reverse both;
+  }
+  .hero-intro .portrait-brows {
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hero-intro:hover .portrait-brows {
+    transform: translateY(-1.6px);
+  }
+  .hero-intro .portrait-head-tilt {
+    transform-box: view-box;
+    transform-origin: 50px 76px;
+    transition: transform 420ms var(--spring-deck, ease-out);
+  }
+  .hero-intro:hover .portrait-head-tilt {
+    transform: rotate(-5deg);
+  }
+}
+
 /* Hero card deck hover — springs sampled from benshih.design's Framer
    Motion config, as CSS linear() curves so no animation library is needed.
    CSS transitions retarget from wherever they are, so moving between cards
