@@ -104,7 +104,7 @@ const WORK: WorkSubsection[] = [
   {
     heading: "Angel One",
     paragraphs: [
-      "Angel One explains more and handles the split better, but it puts everything into one long, formal form and nudges people toward opting out.",
+      "Angel One explains more and gives a clear summary, but each nominee means another long, formal form, and it nudges people toward opting out.",
     ],
     screens: [
       {
@@ -113,31 +113,26 @@ const WORK: WorkSubsection[] = [
         caption: "Empty state",
       },
       {
-        src: "/case-studies/nominee/angel-form.png",
-        alt: "Angel One nominee form: name, relationship, share %, date of birth, document type and number, mobile number",
-        caption: "One long form",
+        src: "/case-studies/nominee/angel-form-filled.png",
+        alt: "Bottom of the Angel One nominee form: mobile number, email and five address fields, with Proceed and Add Another Nominee buttons",
+        caption: "Form after form",
       },
       {
         src: "/case-studies/nominee/angel-summary.png",
         alt: "Angel One nominee summary: cards for Rohit, Rahul and Usha with relationship, allocation, edit and delete, followed by declaration checkboxes",
         caption: "Nominee summary",
       },
-      {
-        src: "/case-studies/nominee/angel-allocation.png",
-        alt: "Angel One Edit Holdings Allocation sheet with three fields, a red “Total : 90 %”, an Allocate equally link, and a disabled Proceed to eSign button",
-        caption: "Edit allocation",
-      },
     ],
     notes: {
       good: [
         "The empty state says why a nominee matters and that opting out is a valid choice.",
         "The summary cards show name, relationship and share for each nominee, with edit and delete right there.",
-        "The allocation sheet keeps a running total, offers “Allocate equally”, and keeps “Proceed” disabled until the total is 100%.",
       ],
       bad: [
         "“Opt out” is the filled, primary button and “Add nominee” is the secondary one, so the design pushes people away from adding a nominee.",
         "Share, ID document, contact details and five address fields all come in one long scroll, and the share is asked before you know how many nominees you’ll add.",
-        "The allocation sheet labels fields by relationship, not by name, so two of them both read “Mother Allocation %”.",
+        "Adding several nominees means filling one long form after another.",
+        "To change a percentage, you have to go back into the form.",
       ],
     },
   },
