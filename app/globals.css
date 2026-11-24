@@ -393,9 +393,3 @@ html {
   0%, 34% { transform: rotateY(-5deg); }
   66%, 100% { transform: rotateY(-175deg); }
 }
-
-/* Read Along headline (components/read-along.tsx) */
-.read-along [data-word] { transition: color 180ms ease; }
-.read-along[data-reading] [data-word] { cursor: pointer; }
-.read-along [data-word="next"] { color: color-mix(in srgb, var(--color-accent-base) 60%, #ffffff); }
-.read-along [data-word="now"] { color: var(--color-cta-text); }
