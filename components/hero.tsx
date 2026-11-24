@@ -7,6 +7,7 @@ import type { CSSProperties } from "react";
 import { cx } from "@/lib/cx";
 import { Panel } from "@/components/panel";
 import HeroIntro from "@/components/hero-intro";
+import ReadAlong from "@/components/read-along";
 import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "@/components/cta-styles";
 
 // ---------------------------------------------------------------------------
@@ -684,18 +685,15 @@ export default function Hero() {
               keeps it inside the panel at every desktop width. Below
               1024px the lines are allowed to wrap instead, so phones get a
               readable 38px+ headline rather than one shrunk to fit. */}
-          <h1
+          <ReadAlong
+            lines={["I design products", "where people invest their money."]}
             className="max-w-3xl font-display font-bold text-accent-base"
             style={{
               fontSize: "clamp(38px, calc((100vw - 250px) / 15), 88px)",
-              lineHeight: 1.05,
+              lineHeight: 1.2,
               letterSpacing: "-0.02em",
             }}
-          >
-            {/* One flowing sentence on phones; two set lines from 1024px. */}
-            <span className="min-[1024px]:block min-[1024px]:whitespace-nowrap">I design the screens </span>
-            <span className="min-[1024px]:block min-[1024px]:whitespace-nowrap">where people invest their money.</span>
-          </h1>
+          />
 
           {/* Sub headline */}
           <p className="mt-[20px] max-w-[46em] font-body text-[18px] font-normal leading-[1.6] text-text-primary md:mt-6 md:text-h3 md:leading-[1.6]">
